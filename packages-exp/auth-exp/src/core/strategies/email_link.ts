@@ -35,6 +35,9 @@ export async function sendSignInLinkToEmail(
     requestType: externs.Operation.EMAIL_SIGNIN,
     email
   };
+  assert(actionCodeSettings?.handleCodeInApp, AuthErrorCode.ARGUMENT_ERROR, {
+    appName: auth.name
+  });
   if (actionCodeSettings) {
     setActionCodeSettingsOnRequest(request, actionCodeSettings);
   }
