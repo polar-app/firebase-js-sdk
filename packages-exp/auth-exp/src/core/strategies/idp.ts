@@ -93,7 +93,11 @@ export function _signIn(params: IdpTaskParams): Promise<UserCredential> {
 export function _reauth(params: IdpTaskParams): Promise<UserCredential> {
   const { auth, user } = params;
   assert(user, AuthErrorCode.INTERNAL_ERROR, { appName: auth.name });
-  return _reauthenticate(user, new IdpCredential(params), params.bypassAuthState);
+  return _reauthenticate(
+    user,
+    new IdpCredential(params),
+    params.bypassAuthState
+  );
 }
 
 export async function _link(params: IdpTaskParams): Promise<UserCredential> {
