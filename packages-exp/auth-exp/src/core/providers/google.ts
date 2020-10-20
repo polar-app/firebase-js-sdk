@@ -30,10 +30,6 @@ export class GoogleAuthProvider extends OAuthProvider {
 
   constructor() {
     super(externs.ProviderId.GOOGLE);
-  }
-
-  constructor() {
-    super(externs.ProviderId.GOOGLE);
     this.addScope('profile');
   }
 
