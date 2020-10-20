@@ -155,7 +155,7 @@ export function getIdTokenResult(externUser: externs.User, forceRefresh?: boolea
 export function getMultiFactorResolver(auth: externs.Auth, errorExtern: externs.MultiFactorError): externs.MultiFactorResolver;
 
 // @public (undocumented)
-export function getRedirectResult(authExtern: externs.Auth, resolverExtern?: externs.PopupRedirectResolver): Promise<externs.UserCredential | null>;
+export function getRedirectResult(authExtern: externs.Auth, resolverExtern?: externs.PopupRedirectResolver, bypassAuthState?: boolean): Promise<externs.UserCredential | null>;
 
 // @public (undocumented)
 export class GithubAuthProvider extends OAuthProvider {

@@ -32,6 +32,11 @@ export class GoogleAuthProvider extends OAuthProvider {
     super(externs.ProviderId.GOOGLE);
   }
 
+  constructor() {
+    super(externs.ProviderId.GOOGLE);
+    this.addScope('profile');
+  }
+
   static credential(
     idToken?: string | null,
     accessToken?: string | null

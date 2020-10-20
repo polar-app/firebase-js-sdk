@@ -60,11 +60,13 @@ export async function unlink(
  */
 export async function _link(
   user: User,
-  credential: AuthCredential
+  credential: AuthCredential,
+  bypassAuthState = false
 ): Promise<UserCredential> {
   const response = await _logoutIfInvalidated(
     user,
-    credential._linkToIdToken(user.auth, await user.getIdToken())
+    credential._linkToIdToken(user.auth, await user.getIdToken()),
+    bypassAuthState
   );
   return UserCredentialImpl._forOperation(
     user,
