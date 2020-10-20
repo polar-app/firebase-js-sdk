@@ -103,14 +103,19 @@ export async function getRedirectResult(
   const auth = _castAuth(authExtern);
   const resolver = _withDefaultResolver(auth, resolverExtern);
   const action = new RedirectAction(auth, resolver);
+  console.log('Executing redirect action');
   const result = await action.execute();
 
   if (result) {
     delete result.user._redirectEventId;
+    console.log('Persisting user');
     await auth._persistUserIfCurrent(result.user as User);
+    console.log('Updating redirect user');
     await auth._setRedirectUser(null, resolverExtern);
+    console.log('Finished');
   }
 
+  console.log('Finished with total');
   return result;
 }
 
