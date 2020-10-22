@@ -35,7 +35,9 @@ import { AuthPopup } from '../util/popup';
 import { AbstractPopupRedirectOperation } from './abstract_popup_redirect_operation';
 
 // The event timeout is the same on mobile and desktop, no need for Delay.
-export const _AUTH_EVENT_TIMEOUT = 2020;
+export const enum Timeout {
+  AUTH_EVENT = 2000
+}
 export const _POLL_WINDOW_CLOSE_TIMEOUT = new Delay(2000, 10000);
 
 export async function signInWithPopup(
@@ -207,7 +209,7 @@ class PopupOperation extends AbstractPopupRedirectOperation {
               appName
             })
           );
-        }, _AUTH_EVENT_TIMEOUT);
+        }, Timeout.AUTH_EVENT);
         return;
       }
 
