@@ -343,7 +343,7 @@ function hasVisibleClients(clientList: WindowClient[]): boolean {
       client.visibilityState === 'visible' &&
       // Ignore chrome-extension clients as that matches the background pages of extensions, which
       // are always considered visible for some reason.
-      !client.url.startsWith('chrome-extension://')
+      !(client.url.startsWith('chrome-extension://') || client.url.startsWith('moz-extension://'))
   );
 }
 

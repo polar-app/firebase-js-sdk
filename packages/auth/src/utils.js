@@ -440,7 +440,7 @@ fireauth.util.IP_ADDRESS_REGEXP_ = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
  */
 fireauth.util.matchDomain = function(domainPattern, domain, scheme) {
   // Chrome extension matching.
-  if (domainPattern.indexOf('chrome-extension://') == 0) {
+  if (domainPattern.indexOf('chrome-extension://') === 0) {
     var chromeExtUri = goog.Uri.parse(domainPattern);
     // Domain must match and the current scheme must be a Chrome extension.
     return chromeExtUri.getDomain() == domain && scheme == 'chrome-extension';
@@ -1026,7 +1026,7 @@ fireauth.util.getCurrentScheme = function() {
  * @return {boolean} Whether the current page is a Chrome extension.
  */
 fireauth.util.isChromeExtension = function() {
-  return fireauth.util.getCurrentScheme() === 'chrome-extension:';
+  return fireauth.util.getCurrentScheme() === 'chrome-extension:' || fireauth.util.getCurrentScheme() === 'moz-extension:';
 };
 
 

@@ -49,8 +49,8 @@ fireauth.InvalidOriginError = function(origin) {
     // Chrome extension whitelisting.
     // Replace chrome-extension://CHROME_EXT_ID in error message template.
     message = goog.string.subs(
-        fireauth.InvalidOriginError.CHROME_EXTENSION_MESSAGE_TEMPLATE_,
-        domain);
+        fireauth.InvalidOriginError.WEB_EXTENSION_MESSAGE_TEMPLATE_,
+        scheme, domain);
   } else if (scheme == 'http' || scheme == 'https') {
     // Replace domain in error message template.
     message = goog.string.subs(
@@ -76,7 +76,7 @@ fireauth.InvalidOriginError.HTTP_MESSAGE_TEMPLATE_ = 'This domain (%s) is no' +
  * @private @const {string} The Chrome extension invalid origin message
  *     template.
  */
-fireauth.InvalidOriginError.CHROME_EXTENSION_MESSAGE_TEMPLATE_ = 'This chrom' +
-    'e extension ID (chrome-extension://%s) is not authorized to run this op' +
+fireauth.InvalidOriginError.WEB_EXTENSION_MESSAGE_TEMPLATE_ = 'This ' +
+    'extension ID (%s://%s) is not authorized to run this op' +
     'eration. Add it to the OAuth redirect domains list in the Firebase cons' +
     'ole -> Auth section -> Sign in method tab.';

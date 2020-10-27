@@ -287,7 +287,7 @@ const ERRORS: ErrorMap<AuthErrorCode> = {
     'Auth section.',
   [AuthErrorCode.OPERATION_NOT_SUPPORTED]:
     'This operation is not supported in the environment this application is ' +
-    'running on. "location.protocol" must be http, https or chrome-extension' +
+    'running on. "location.protocol" must be http, https chrome-extension, or moz-extension' +
     ' and web storage must be enabled.',
   [AuthErrorCode.POPUP_BLOCKED]:
     'Unable to establish a connection with the popup. It may have been blocked by the browser.',

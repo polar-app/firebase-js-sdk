@@ -407,7 +407,7 @@ fireauth.AuthError.MESSAGES_[fireauth.authenum.Error.OPERATION_NOT_ALLOWED] =
     'Auth section.';
 fireauth.AuthError.MESSAGES_[fireauth.authenum.Error.OPERATION_NOT_SUPPORTED] =
     'This operation is not supported in the environment this application is ' +
-    'running on. "location.protocol" must be http, https or chrome-extension' +
+    'running on. "location.protocol" must be http, https, chrome-extension, or moz-extension' +
     ' and web storage must be enabled.';
 fireauth.AuthError.MESSAGES_[fireauth.authenum.Error.POPUP_BLOCKED] =
     'Unable to establish a connection with the popup. It may have been ' +

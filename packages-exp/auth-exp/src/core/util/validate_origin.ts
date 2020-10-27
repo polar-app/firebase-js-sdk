@@ -49,19 +49,29 @@ export async function _validateOrigin(auth: Auth): Promise<void> {
 function matchDomain(expected: string): boolean {
   const currentUrl = _getCurrentUrl();
   const { protocol, hostname } = new URL(currentUrl);
-  if (expected.startsWith('chrome-extension://')) {
-    const ceUrl = new URL(expected);
 
-    if (ceUrl.hostname === '' && hostname === '') {
+  function handleExtension(scheme: 'chrome-extension' | 'moz-extension') {
+    const extUrl = new URL(expected);
+
+    if (extUrl.hostname === '' && hostname === '') {
       // For some reason we're not parsing chrome URLs properly
       return (
-        protocol === 'chrome-extension:' &&
-        expected.replace('chrome-extension://', '') ===
-          currentUrl.replace('chrome-extension://', '')
+        protocol === `${scheme}:` &&
+        expected.replace(`${scheme}://`, '') ===
+        currentUrl.replace(`${scheme}://`, '')
       );
     }
 
-    return protocol === 'chrome-extension:' && ceUrl.hostname === hostname;
+    return protocol === 'chrome-extension:' && extUrl.hostname === hostname;
+
+  }
+
+  if (expected.startsWith('chrome-extension://')) {
+    return handleExtension('chrome-extension');
+  }
+
+  if (expected.startsWith('moz-extension://')) {
+    return handleExtension('moz-extension');
   }
 
   if (!HTTP_REGEX.test(protocol)) {
